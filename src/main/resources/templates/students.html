@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http>//www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Student Management Service</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class = "row">
+        <h1>List Students </h1>
+    </div>
+    <div>
+        <a th:href="@{/students/new}" class="btn-primary btn btn-sm mb-3"> Add Student </a>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+           <tr>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Email</th>
+               <th>Actions</th>
+           </tr>
+            </thead>
+        <tbody>
+           <tr th:each = "student: ${students}">
+               <td th:text = "${student.firstName}"> </td>
+               <td th:text = "${student.lastName}"> </td>
+               <td th:text = "${student.email}"> </td>
+               <td>
+                   <a th:href="@{/students/edit/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
+                   <a th:href="@{/students/delete/{id}(id=${student.id})}" class="btn btn-primary">Delete</a>
+               </td>
+           </tr>
+        </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
